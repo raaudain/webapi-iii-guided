@@ -21,7 +21,7 @@ function logger(req, res, next){
 // write a gatekeeper middleware that reads a password from the headers and if the password is "mellon", let it continue
 // if not, send back status code 401 and a message
 function password(req, res, next){
-  if(req.url === "/mellon"){
+  if(req.headers.password && req.headers.password.toLowerCase() === "mellon"){
     next();
   }
   else{
